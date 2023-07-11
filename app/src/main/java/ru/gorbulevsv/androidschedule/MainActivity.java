@@ -22,6 +22,7 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
     SwipeRefreshLayout swipeRefreshLayout;
     WebView webView;
+    String URL="https://hram-babynino.ru/android/schedule";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
         webView = findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("https://svelte-hram.netlify.app/android/schedule");
+        webView.getSettings().setDomStorageEnabled(true);
+        webView.loadUrl(URL);
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                     webView.loadUrl("file:///android_asset/error.html");
                 }
                 else{
-                    webView.loadUrl("https://svelte-hram.netlify.app/android/schedule");
+                    webView.loadUrl(URL);
                 }
             }
         });
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 webView.loadUrl("file:///android_asset/error.html");
             }
             else{
-                webView.loadUrl("https://svelte-hram.netlify.app/android/schedule");
+                webView.loadUrl(URL);
             }
         });
 
